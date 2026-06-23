@@ -95,9 +95,13 @@ with tab_evo:
     )
 
 with tab_rank:
+    # Année réelle (ou plage si les pays n'ont pas tous le même millésime).
+    yrs = latest["year"]
+    ymin, ymax = int(yrs.min()), int(yrs.max())
+    year_label = str(ymax) if ymin == ymax else f"{ymin}-{ymax}"
     fig = bar_latest(
         latest,
-        title=f"{indicator.label} - dernière année disponible par pays",
+        title=f"{indicator.label} - par pays ({year_label})",
         y_title=indicator.unit,
     )
     st.plotly_chart(fig, width="stretch")

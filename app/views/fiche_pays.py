@@ -49,7 +49,7 @@ year_label = f" {latest_year}" if latest_year else ""
 
 hero(
     name_of(iso3),
-    f"Fiche macroéconomique{year_label} — capitale : {meta.get('capital', '—')}.",
+    f"Fiche macroéconomique{year_label} <br>capitale : {meta.get('capital', '—')}",
     pill="fiche pays",
     icon=flag_img_html(iso3, height=34),
 )
