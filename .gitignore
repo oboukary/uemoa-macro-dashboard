@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.Python
+
+# Secrets / config locale
+.env
+.streamlit/secrets.toml
+
+# Cache & données
+.cache/
+*.duckdb
+data_cache/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Config locale de l'agent / preview (chemins machine-spécifiques)
+.claude/

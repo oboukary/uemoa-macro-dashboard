@@ -1,0 +1,16 @@
+services:
+  uemoa-dashboard:
+    build: .
+    image: uemoa-macro-dashboard:latest
+    container_name: uemoa-macro-dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      # Clé API FRED optionnelle (contexte mondial — V2)
+      - FRED_API_KEY=${FRED_API_KEY:-}
+      # Durée de cache des appels API en secondes (6 h par défaut)
+      - CACHE_TTL=${CACHE_TTL:-21600}
+    env_file:
+      - path: .env
+        required: false
+    restart: unless-stopped

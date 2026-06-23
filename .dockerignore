@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.git/
+.github/
+.gitignore
+.env
+.streamlit/secrets.toml
+*.md
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

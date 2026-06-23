@@ -1,0 +1,132 @@
+# Catalogue d'indicateurs macroéconomiques (UEMOA Macro Dashboard)
+# Chaque entrée décrit une série de la Banque mondiale (API v2).
+# - code      : code de l'indicateur Banque mondiale
+# - label     : libellé affiché (FR)
+# - unit      : unité affichée
+# - format    : mode de formatage (number | percent | currency | people)
+# - category  : regroupement thématique dans l'interface
+# - higher_is_better : sens "favorable" (utilisé pour le scoring V3)
+# - decimals  : nombre de décimales à l'affichage
+# - source    : source de la donnée
+
+indicators:
+
+  gdp_growth:
+    code: NY.GDP.MKTP.KD.ZG
+    label: "Croissance du PIB"
+    unit: "%"
+    format: percent
+    category: "Croissance & activité"
+    higher_is_better: true
+    decimals: 1
+    source: "World Bank"
+
+  gdp_current_usd:
+    code: NY.GDP.MKTP.CD
+    label: "PIB (USD courant)"
+    unit: "USD"
+    format: currency
+    category: "Croissance & activité"
+    higher_is_better: true
+    decimals: 0
+    source: "World Bank"
+
+  gdp_per_capita:
+    code: NY.GDP.PCAP.CD
+    label: "PIB par habitant"
+    unit: "USD"
+    format: currency
+    category: "Croissance & activité"
+    higher_is_better: true
+    decimals: 0
+    source: "World Bank"
+
+  inflation:
+    code: FP.CPI.TOTL.ZG
+    label: "Inflation (prix à la consommation)"
+    unit: "%"
+    format: percent
+    category: "Prix & monnaie"
+    higher_is_better: false
+    decimals: 1
+    source: "World Bank"
+
+  population:
+    code: SP.POP.TOTL
+    label: "Population totale"
+    unit: "hab."
+    format: people
+    category: "Démographie"
+    higher_is_better: true
+    decimals: 0
+    source: "World Bank"
+
+  unemployment:
+    code: SL.UEM.TOTL.ZS
+    label: "Chômage (OIT estimé)"
+    unit: "%"
+    format: percent
+    category: "Emploi & social"
+    higher_is_better: false
+    decimals: 1
+    source: "World Bank"
+
+  gov_debt_gdp:
+    code: GC.DOD.TOTL.GD.ZS
+    label: "Dette publique (% du PIB)"
+    unit: "% PIB"
+    format: percent
+    category: "Finances publiques"
+    higher_is_better: false
+    decimals: 1
+    source: "World Bank"
+
+  current_account_gdp:
+    code: BN.CAB.XOKA.GD.ZS
+    label: "Solde courant (% du PIB)"
+    unit: "% PIB"
+    format: percent
+    category: "Commerce extérieur"
+    higher_is_better: true
+    decimals: 1
+    source: "World Bank"
+
+  exports:
+    code: NE.EXP.GNFS.CD
+    label: "Exportations biens & services"
+    unit: "USD"
+    format: currency
+    category: "Commerce extérieur"
+    higher_is_better: true
+    decimals: 0
+    source: "World Bank"
+
+  imports:
+    code: NE.IMP.GNFS.CD
+    label: "Importations biens & services"
+    unit: "USD"
+    format: currency
+    category: "Commerce extérieur"
+    higher_is_better: false
+    decimals: 0
+    source: "World Bank"
+
+  fdi_gdp:
+    code: BX.KLT.DINV.WD.GD.ZS
+    label: "IDE entrants (% du PIB)"
+    unit: "% PIB"
+    format: percent
+    category: "Investissement"
+    higher_is_better: true
+    decimals: 1
+    source: "World Bank"
+
+  life_expectancy:
+    code: SP.DYN.LE00.IN
+    label: "Espérance de vie à la naissance"
+    unit: "ans"
+    format: number
+    category: "Démographie"
+    higher_is_better: true
+    decimals: 1
+    source: "World Bank"

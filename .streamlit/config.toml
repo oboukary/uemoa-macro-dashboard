@@ -1,0 +1,17 @@
+# Configuration Streamlit — thème & serveur
+[theme]
+base = "light"
+primaryColor = "#0E7C66"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F4F6F8"
+textColor = "#1A1A2E"
+font = "sans serif"
+
+[server]
+headless = true
+address = "0.0.0.0"
+port = 8501
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
