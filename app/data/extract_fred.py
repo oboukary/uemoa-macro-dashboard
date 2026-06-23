@@ -1,7 +1,7 @@
 """Extraction depuis l'API FRED (Federal Reserve Bank of St. Louis).
 
 Utile pour le CONTEXTE GLOBAL (V2) : taux Fed, prix du pétrole, indice dollar,
-inflation US, matières premières — variables qui influencent les économies UEMOA.
+inflation US, matières premières - variables qui influencent les économies UEMOA.
 
 Nécessite une clé API gratuite : https://fred.stlouisfed.org/docs/api/api_key.html
 À renseigner dans la variable d'environnement FRED_API_KEY (voir .env.example).

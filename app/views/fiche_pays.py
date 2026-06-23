@@ -49,7 +49,7 @@ year_label = f" {latest_year}" if latest_year else ""
 
 hero(
     name_of(iso3),
-    f"Fiche macroéconomique{year_label} <br>capitale : {meta.get('capital', '—')}",
+    f"Fiche macroéconomique{year_label}<br>Capitale : {meta.get('capital', 'n.d.')}.",
     pill="fiche pays",
     icon=flag_img_html(iso3, height=34),
 )
@@ -65,7 +65,7 @@ for i, key in enumerate(FEATURED):
     df = series_cache.get(key)
     col = cols[i % 3]
     if df is None or df.empty:
-        col.metric(ind.label, "—")
+        col.metric(ind.label, "n.d.")
         continue
     df = df.sort_values("year")
     last = df.iloc[-1]

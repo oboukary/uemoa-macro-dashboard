@@ -1,4 +1,4 @@
-# UEMOA Macro Dashboard — dépendances (V1)
+# UEMOA Macro Dashboard - dépendances (V1)
 streamlit>=1.40,<2.0
 pandas>=2.1,<3.0
 plotly>=5.20,<6.0

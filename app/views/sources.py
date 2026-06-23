@@ -92,7 +92,7 @@ st.markdown(
 - **Cache** : les appels API sont mis en cache (6 h par défaut) pour limiter la
   charge réseau. Modifiable via la variable d'environnement `CACHE_TTL`.
 - **Comparabilité** : certains indicateurs en USD courant ne sont pas corrigés de
-  l'inflation ni des taux de change — à interpréter avec prudence dans le temps.
+  l'inflation ni des taux de change - à interpréter avec prudence dans le temps.
 - **Source primaire** : toujours se référer aux publications officielles
   (BCEAO, FMI Article IV, comptes nationaux) pour une analyse engageante.
 """

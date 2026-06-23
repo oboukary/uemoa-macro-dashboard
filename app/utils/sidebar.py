@@ -5,7 +5,7 @@ from __future__ import annotations
 import streamlit as st
 
 from utils.config import Indicator, categories, load_indicators
-from utils.countries import UEMOA_ISO3, flag_img_html, name_of
+from utils.countries import UEMOA_ISO3, name_of
 
 
 def sidebar_brand() -> None:
@@ -26,7 +26,7 @@ def indicator_selector(key: str = "indicator",
     """Sélecteur d'indicateur regroupé par catégorie."""
     indicators = load_indicators()
 
-    # Construit la liste "Catégorie — Libellé" ordonnée par catégorie.
+    # Construit la liste "Catégorie - Libellé" ordonnée par catégorie.
     options: list[str] = []
     label_to_key: dict[str, str] = {}
     for cat in categories():
@@ -59,24 +59,13 @@ def country_multiselect(key: str = "countries",
 
 
 def country_selector(key: str = "country", default: str = "BFA") -> str:
-    """Sélection d'un pays unique (fiche pays). Renvoie un code ISO3.
-
-    Le menu déroulant affiche les noms (les emoji ne s'affichent pas partout) ;
-    le pays sélectionné est rappelé en dessous avec son **vrai drapeau avant
-    son nom**.
-    """
+    """Sélection d'un pays unique (fiche pays). Renvoie un code ISO3."""
     options = list(UEMOA_ISO3)
     index = options.index(default) if default in options else 0
-    iso3 = st.sidebar.selectbox(
+    return st.sidebar.selectbox(
         "Pays",
         options,
         index=index,
         format_func=name_of,
         key=key,
     )
-    st.sidebar.markdown(
-        f'<div class="sidebar-country">{flag_img_html(iso3, height=18)}'
-        f'<span>{name_of(iso3)}</span></div>',
-        unsafe_allow_html=True,
-    )
-    return iso3

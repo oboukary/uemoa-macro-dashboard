@@ -59,7 +59,7 @@ def flag_of(iso3: str) -> str:
 
 
 def label_with_flag(iso3: str) -> str:
-    """`🇸🇳 Sénégal` — pratique pour les libellés (emoji, repli)."""
+    """`🇸🇳 Sénégal` - pratique pour les libellés (emoji, repli)."""
     return f"{flag_of(iso3)} {name_of(iso3)}"
 
 

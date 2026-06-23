@@ -1,6 +1,6 @@
 """Extraction depuis l'API du FMI (Fonds Monétaire International).
 
-Cible (V2) : World Economic Outlook (WEO) et indicateurs IFS — solde budgétaire,
+Cible (V2) : World Economic Outlook (WEO) et indicateurs IFS - solde budgétaire,
 compte courant, dette publique, prévisions macro.
 
 Le FMI expose plusieurs API. Cette implémentation utilise l'API DataMapper v1
@@ -25,11 +25,11 @@ REQUEST_TIMEOUT = 30
 
 # Indicateurs DataMapper du FMI (clé interne -> code FMI + libellé).
 IMF_INDICATORS: dict[str, dict[str, str]] = {
-    "ngdp_rpch": {"code": "NGDP_RPCH", "label": "Croissance du PIB réel (%) — WEO"},
-    "pcpipch": {"code": "PCPIPCH", "label": "Inflation moyenne (%) — WEO"},
-    "ggxwdg_ngdp": {"code": "GGXWDG_NGDP", "label": "Dette publique brute (% PIB) — WEO"},
-    "ggxcnl_ngdp": {"code": "GGXCNL_NGDP", "label": "Solde budgétaire (% PIB) — WEO"},
-    "bca_ngdpd": {"code": "BCA_NGDPD", "label": "Solde courant (% PIB) — WEO"},
+    "ngdp_rpch": {"code": "NGDP_RPCH", "label": "Croissance du PIB réel (%) - WEO"},
+    "pcpipch": {"code": "PCPIPCH", "label": "Inflation moyenne (%) - WEO"},
+    "ggxwdg_ngdp": {"code": "GGXWDG_NGDP", "label": "Dette publique brute (% PIB) - WEO"},
+    "ggxcnl_ngdp": {"code": "GGXCNL_NGDP", "label": "Solde budgétaire (% PIB) - WEO"},
+    "bca_ngdpd": {"code": "BCA_NGDPD", "label": "Solde courant (% PIB) - WEO"},
 }
 
 

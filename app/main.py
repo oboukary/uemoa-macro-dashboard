@@ -1,4 +1,4 @@
-"""UEMOA Macro Dashboard — point d'entrée et navigation.
+"""UEMOA Macro Dashboard - point d'entrée et navigation.
 
 Ce script est un simple *routeur* : il configure la page, injecte le CSS, puis
 délègue l'affichage à la vue sélectionnée via `st.navigation`. Les vues sont

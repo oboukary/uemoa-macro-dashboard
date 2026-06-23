@@ -12,7 +12,7 @@ def _is_missing(value) -> bool:
 def human_number(value: float, decimals: int = 1) -> str:
     """Formate un grand nombre en notation courte : 1 234 567 -> 1,23 M."""
     if _is_missing(value):
-        return "—"
+        return "n.d."
     value = float(value)
     sign = "-" if value < 0 else ""
     n = abs(value)
@@ -25,7 +25,7 @@ def human_number(value: float, decimals: int = 1) -> str:
 def format_value(value, fmt: str = "number", unit: str = "", decimals: int = 1) -> str:
     """Formate une valeur selon le type d'indicateur."""
     if _is_missing(value):
-        return "—"
+        return "n.d."
     value = float(value)
 
     if fmt == "percent":

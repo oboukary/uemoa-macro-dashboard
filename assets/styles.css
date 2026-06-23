@@ -1,5 +1,5 @@
 /* ============================================================================
-   UEMOA Macro Dashboard — habillage visuel
+   UEMOA Macro Dashboard - habillage visuel
    Injecté via utils.theme.inject_css()
    ============================================================================ */
 
@@ -68,23 +68,6 @@ section[data-testid="stSidebar"] [data-baseweb="input"] > div {
     font-size: 0.78rem;
     font-weight: 600;
     letter-spacing: 0.03em;
-}
-
-/* Pays sélectionné dans la barre latérale (drapeau avant le nom) -------------*/
-.sidebar-country {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0.4rem 0 0.2rem;
-    padding: 0.35rem 0.6rem;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-.sidebar-country img {
-    display: block;
 }
 
 /* Pastilles pays (drapeau + nom) --------------------------------------------*/
