@@ -11,10 +11,10 @@ Les données sont extraites en temps réel depuis l'**API de la Banque mondiale*
 
 ## ✨ Fonctionnalités (V1)
 
-- **Vue régionale** — synthèse, évolution et classement des 8 pays pour un indicateur.
-- **Comparaison pays** — trajectoires comparées, période ajustable, classement.
-- **Fiche pays** — tableau de bord mono-pays (KPI + petits graphiques).
-- **Sources & méthodologie** — provenance des données, catalogue d'indicateurs, limites.
+- **Vue régionale**: synthèse, évolution et classement des 8 pays pour un indicateur.
+- **Comparaison pays**: trajectoires comparées, période ajustable, classement.
+- **Fiche pays**: tableau de bord mono-pays (KPI + petits graphiques).
+- **Sources & méthodologie**: provenance des données, catalogue d'indicateurs, limites.
 - **Export CSV** sur chaque vue.
 - Interface soignée : barre latérale sombre, cartes KPI, graphiques Plotly interactifs.
 
@@ -29,11 +29,12 @@ extérieur, IDE, espérance de vie…) configurables dans
 ```
 app streamlit/
 ├── app/
-│   ├── main.py                    # Page d'accueil : Vue régionale
-│   ├── pages/
-│   │   ├── 1_Comparaison_pays.py
-│   │   ├── 2_Fiche_pays.py
-│   │   └── 3_Sources_methodologie.py
+│   ├── main.py                    # Routeur : config + st.navigation
+│   ├── views/
+│   │   ├── accueil.py             # Vue régionale (Accueil)
+│   │   ├── comparaison.py
+│   │   ├── fiche_pays.py
+│   │   └── sources.py
 │   ├── data/
 │   │   ├── extract_worldbank.py   # ✅ API Banque mondiale (V1)
 │   │   ├── extract_imf.py         # 🧩 API FMI / DataMapper (V2)
@@ -85,14 +86,14 @@ streamlit run app/main.py
 
 L'application est disponible sur http://localhost:8501.
 
-> ⚠️ Ne lancez jamais `python -m venv .venv` par-dessus un venv existant avec une
+>  Ne lancez jamais `python -m venv .venv` par-dessus un venv existant avec une
 > version de Python différente : cela réécrit l'interpréteur sans réinstaller les
 > paquets (numpy/pandas compilés deviennent incompatibles). En cas de doute,
 > supprimez `.venv` et recréez-le avec uv.
 
 ---
 
-## 🐳 Docker
+##  Docker
 
 ```bash
 # Build + run avec docker-compose (recommandé)
@@ -107,25 +108,25 @@ Puis ouvrir http://localhost:8501.
 
 ---
 
-## 🔐 Configuration
+##  Configuration
 
 Copiez `.env.example` en `.env` et renseignez si besoin :
 
 | Variable | Rôle | Défaut |
 |---|---|---|
-| `FRED_API_KEY` | Clé API FRED (contexte mondial, V2) | — (optionnel) |
+| `FRED_API_KEY` | Clé API FRED (contexte mondial, V2) | - (optionnel) |
 | `CACHE_TTL` | Durée de cache des appels API (secondes) | `21600` (6 h) |
 
 Clé FRED gratuite : https://fred.stlouisfed.org/docs/api/api_key.html
 
 ---
 
-## 🔄 CI/CD (GitHub Actions)
+##  CI/CD (GitHub Actions)
 
 [`/.github/workflows/deploy.yml`](.github/workflows/deploy.yml) à chaque push sur `main` :
 
-1. **checks** — installe les dépendances, compile les sources, smoke test des imports.
-2. **docker** — build l'image et la publie sur **GitHub Container Registry**
+1. **checks** - installe les dépendances, compile les sources, smoke test des imports.
+2. **docker** - build l'image et la publie sur **GitHub Container Registry**
    (`ghcr.io/<owner>/uemoa-macro-dashboard`).
 
 Pour activer la publication, vérifiez que les *workflow permissions* du dépôt
@@ -133,7 +134,7 @@ autorisent l'écriture des packages (Settings → Actions → General).
 
 ---
 
-## 🛣️ Feuille de route
+## ️ Feuille de route
 
 | Version | Contenu |
 |---|---|
@@ -143,11 +144,11 @@ autorisent l'écriture des packages (Settings → Actions → General).
 
 ---
 
-## 📚 Sources de données
+##  Sources de données
 
-- **Banque mondiale** — API v2 : <https://datahelpdesk.worldbank.org/knowledgebase/articles/889392>
-- **FMI** — DataMapper : <https://www.imf.org/external/datamapper/api/help>
-- **FRED** — St. Louis Fed : <https://fred.stlouisfed.org/docs/api/fred/>
+- **Banque mondiale** - API v2 : <https://datahelpdesk.worldbank.org/knowledgebase/articles/889392>
+- **FMI** - DataMapper : <https://www.imf.org/external/datamapper/api/help>
+- **FRED** - St. Louis Fed : <https://fred.stlouisfed.org/docs/api/fred/>
 
 > Les codes pays suivent la norme **ISO 3166-1 alpha-3**, commune à la Banque
 > mondiale et au FMI.

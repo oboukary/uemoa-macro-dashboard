@@ -5,6 +5,7 @@ plotly>=5.20,<6.0
 requests>=2.31,<3.0
 python-dotenv>=1.0,<2.0
 PyYAML>=6.0,<7.0
+pydantic>=2.5,<3.0
 
 # --- V2 (décommenter au besoin) ---
 # duckdb>=1.0        # cache analytique local

@@ -20,17 +20,14 @@ from utils.countries import (  # noqa: E402
     name_of,
 )
 from utils.format import format_delta, format_value  # noqa: E402
-from utils.sidebar import country_selector, sidebar_brand  # noqa: E402
-from utils.theme import footer, hero, setup_page  # noqa: E402
+from utils.sidebar import country_selector  # noqa: E402
+from utils.theme import footer, hero  # noqa: E402
 
 # Indicateurs mis en avant sur la fiche (clés de indicators.yml)
 FEATURED = [
     "gdp_growth", "inflation", "gdp_per_capita",
     "population", "gov_debt_gdp", "current_account_gdp",
 ]
-
-setup_page()
-sidebar_brand()
 
 iso3 = country_selector(key="fiche_country")
 meta = UEMOA_COUNTRIES.get(iso3, {})

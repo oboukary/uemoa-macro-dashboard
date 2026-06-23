@@ -5,12 +5,13 @@ variables d'environnement et constantes partagées.
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
+from typing import Literal
 
 import yaml
 from dotenv import load_dotenv
+from pydantic import BaseModel, ConfigDict, Field
 
 # Charge .env si présent (développement local). En production (Docker / Cloud),
 # les variables sont fournies par l'environnement.
@@ -37,19 +38,26 @@ CACHE_TTL = int(os.getenv("CACHE_TTL", str(6 * 60 * 60)))
 FRED_API_KEY = os.getenv("FRED_API_KEY", "")
 
 
-@dataclass(frozen=True)
-class Indicator:
-    """Description d'un indicateur (issue de indicators.yml)."""
+class Indicator(BaseModel):
+    """Description d'un indicateur (issue de indicators.yml).
+
+    Modèle Pydantic : immuable (`frozen`), avec valeurs par défaut et validation
+    (le `format` doit faire partie des types gérés par utils.format ; `decimals`
+    doit être positif). Les champs absents du YAML prennent leur défaut, les
+    types sont coercés automatiquement.
+    """
+
+    model_config = ConfigDict(frozen=True, extra="ignore")
 
     key: str
     code: str
     label: str
-    unit: str
-    format: str
-    category: str
-    higher_is_better: bool
-    decimals: int
-    source: str
+    unit: str = ""
+    format: Literal["number", "percent", "currency", "people"] = "number"
+    category: str = "Autres"
+    higher_is_better: bool = True
+    decimals: int = Field(default=1, ge=0)
+    source: str = "World Bank"
 
     @property
     def label_unit(self) -> str:
@@ -62,20 +70,10 @@ def load_indicators() -> dict[str, Indicator]:
     with open(INDICATORS_FILE, "r", encoding="utf-8") as fh:
         raw = yaml.safe_load(fh)
 
-    indicators: dict[str, Indicator] = {}
-    for key, meta in raw.get("indicators", {}).items():
-        indicators[key] = Indicator(
-            key=key,
-            code=meta["code"],
-            label=meta["label"],
-            unit=meta.get("unit", ""),
-            format=meta.get("format", "number"),
-            category=meta.get("category", "Autres"),
-            higher_is_better=bool(meta.get("higher_is_better", True)),
-            decimals=int(meta.get("decimals", 1)),
-            source=meta.get("source", "World Bank"),
-        )
-    return indicators
+    return {
+        key: Indicator(key=key, **meta)
+        for key, meta in raw.get("indicators", {}).items()
+    }
 
 
 def indicator_by_code(code: str) -> Indicator | None:

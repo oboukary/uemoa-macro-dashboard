@@ -15,11 +15,8 @@ import streamlit as st  # noqa: E402
 from data.extract_fred import is_configured as fred_ready  # noqa: E402
 from utils.config import load_indicators  # noqa: E402
 from utils.countries import UEMOA_COUNTRIES, flag_data_uri  # noqa: E402
-from utils.sidebar import sidebar_brand  # noqa: E402
-from utils.theme import footer, hero, setup_page  # noqa: E402
+from utils.theme import footer, hero  # noqa: E402
 
-setup_page()
-sidebar_brand()
 hero(
     "Sources & méthodologie",
     "Provenance des données, indicateurs disponibles et limites d'interprétation.",

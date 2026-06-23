@@ -18,12 +18,9 @@ from utils.format import format_value  # noqa: E402
 from utils.sidebar import (  # noqa: E402
     country_multiselect,
     indicator_selector,
-    sidebar_brand,
 )
-from utils.theme import country_chips, footer, hero, setup_page  # noqa: E402
+from utils.theme import country_chips, footer, hero  # noqa: E402
 
-setup_page()
-sidebar_brand()
 hero(
     "Comparaison pays",
     "Comparez les trajectoires de plusieurs pays sur un même indicateur.",
@@ -74,14 +71,14 @@ tab_evo, tab_rank, tab_data = st.tabs(["📈 Évolution", "🏆 Classement", "�
 
 with tab_evo:
     st.plotly_chart(
-        line_by_country(df, title=f"{indicator.label} — évolution comparée",
+        line_by_country(df, title=f"{indicator.label} - évolution comparée",
                         y_title=indicator.unit),
         width="stretch",
     )
 
 with tab_rank:
     st.plotly_chart(
-        bar_latest(latest, title=f"{indicator.label} — dernière valeur par pays",
+        bar_latest(latest, title=f"{indicator.label} - dernière valeur par pays",
                    y_title=indicator.unit),
         width="stretch",
     )
